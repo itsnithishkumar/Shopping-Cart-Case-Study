@@ -3,7 +3,7 @@ package com.nithish.profileservice.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection="UserDetails")
 public class UserDetails {
 	
 	@Id
@@ -80,6 +80,12 @@ public class UserDetails {
 	}
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	@Override
+	public String toString() {
+		return "UserDetails [userId=" + userId + ", password=" + password + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", role=" + role + ", emailId=" + emailId + ", mobileNo=" + mobileNo + ", address="
+				+ address + "]";
 	}
 	
 
