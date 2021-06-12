@@ -3,21 +3,19 @@ package com.nithish.cartservice.entity;
 import java.math.BigDecimal;
 
 public class Items {
-	
+
 	private String productName;
+	private BigDecimal price;
 	private int quantity;
-	private BigDecimal subTotal;
-	private Product product;
-	
-	public Items() {
 		
+	public Items() {
+		super();
 	}
-	public Items(String productName, int quantity, BigDecimal subTotal, Product product) {
+	public Items(String productName, BigDecimal price, int quantity) {
 		super();
 		this.productName = productName;
+		this.price = price;
 		this.quantity = quantity;
-		this.subTotal = subTotal;
-		this.product = product;
 	}
 	public String getProductName() {
 		return productName;
@@ -25,27 +23,23 @@ public class Items {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+	public BigDecimal getPrice() {
+		return price;
+	}
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
 	public int getQuantity() {
 		return quantity;
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public BigDecimal getSubTotal() {
-		return subTotal;
-	}
-	public void setSubTotal(BigDecimal subTotal) {
-		this.subTotal = subTotal;
-	}
-	public Product getProduct() {
-		return product;
-	}
-	public void setProduct(Product product) {
-		this.product = product;
+	@Override
+	public String toString() {
+		return "Items [productName=" + productName + ", price=" + price + ", quantity=" + quantity + "]";
 	}
 	
 	
 	
-	
-
 }

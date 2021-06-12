@@ -1,77 +1,44 @@
 package com.nithish.cartservice.controller;
 
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.nithish.cartservice.service.CartService;
+import com.nithish.cartservice.entity.Cart;
+import com.nithish.cartservice.repository.CartRepository;
 
 @RestController
 @RequestMapping("/cart")
 public class CartController {
 	
 	@Autowired
-	private CartService cartService;
+	private CartRepository cartRepository;
 	
-	@GetMapping ("/mycart/{cartId}")
-	@ResponseStatus(HttpStatus.OK)
-    public List<Object> getCart(@PathVariable String cartId){
+	@GetMapping("/allcarts")
+	public List<Cart> getAllCarts() {
 		
-        List<Object> cart = cartService.getCart(cartId);
-        return cart;
-      
+		return cartRepository.findAll();
+		
 	}
-	
-	@PostMapping(value = "/addCart", params = {"productId", "quantity", "productName"})
-	@ResponseStatus(HttpStatus.ACCEPTED)
-    public void addItemToCart(
-            @RequestParam("productId") int productId,
-            @RequestParam("quantity") Integer quantity,
-            @RequestParam("productName") String productName,
-            @RequestHeader(value = "Cookie") String cartId,
-            HttpServletRequest request) {
-        List<Object> cart = cartService.getCart(cartId);
-        if(cart != null) {
-        	if(cart.isEmpty()){
-        		cartService.addItemToCart(cartId, productId, quantity, productName);
-        	}else{
-        		if(cartService.checkIfItemIsExist(cartId, productId)){
-        			cartService.changeItemQuantity(cartId, productId, quantity);
-        		}else {
-        			 cartService.addItemToCart(cartId, productId, quantity, productName);
-        		}
-        	}
-        }
-        	
-        
-    }
-
-    @DeleteMapping(value = "/deleteCart", params = "productId")
-    @ResponseStatus(HttpStatus.GONE)
-    public void removeItemFromCart(
-            @RequestParam("productId") int productId,
-            @RequestHeader(value = "Cookie") String cartId){
-    	List<Object> cart = cartService.getCart(cartId);
-    	if(cart != null) {
-    		cartService.deleteItemFromCart(cartId, productId);
-    	}
-    	else {
-    		return;
-    	}
-    }
-	
-	
+	@GetMapping("/{cartId}")
+	public Optional<Cart> getCartById(@PathVariable String cartId) {
+		
+		return cartRepository.findById(cartId);
+		
+	}
+	@PostMapping("/addcart")
+	public Cart addCart(Cart cart) {
+		
+		return cartRepository.save(cart);
+		
+	}
+	@PutMapping("/updatecart")
+	public Cart updateCart(Cart cart) {
+			
+		return cartRepository.save(cart);
+		
+	}
 
 }

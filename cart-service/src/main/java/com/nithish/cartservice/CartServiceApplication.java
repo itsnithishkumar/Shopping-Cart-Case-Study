@@ -17,10 +17,12 @@ public class CartServiceApplication {
 		SpringApplication.run(CartServiceApplication.class, args);
 	}
 	
-	 @Bean public Docket swaggerConfiguratin() { 
-		 return new Docket(DocumentationType.SWAGGER_2) 
-				 	.select()
+	@Bean 
+	public Docket swaggerConfiguratin() { 
+		return new Docket(DocumentationType.SWAGGER_2) 
+					.select()
 			  		.apis(RequestHandlerSelectors.basePackage("com.nithish.cartservice"))
-			  		.build(); }
+			  		.build(); 
+		}
 
 }
