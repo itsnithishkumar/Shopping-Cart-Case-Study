@@ -18,6 +18,6 @@ public interface ProductService {
 
 	Product updateProduct(Product product);
 
-	Product deleteProductByProductId(int productId);
+	Product deleteProductByProductId(String productId);
 
 }

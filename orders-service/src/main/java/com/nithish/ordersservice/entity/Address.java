@@ -4,7 +4,7 @@ public class Address {
 	
 	private Integer customerId;
 	private String fullName;
-	private int mobileNo;
+	private Long mobileNo;
 	private String houseNo;
 	private String streetName;
 	private String city;
@@ -15,7 +15,7 @@ public class Address {
 		super();
 	}
 
-	public Address(Integer customerId, String fullName, int mobileNo, String houseNo, String streetName, String city,
+	public Address(Integer customerId, String fullName, Long mobileNo, String houseNo, String streetName, String city,
 			String state, int pincode) {
 		super();
 		this.customerId = customerId;
@@ -44,11 +44,11 @@ public class Address {
 		this.fullName = fullName;
 	}
 
-	public int getMobileNo() {
+	public Long getMobileNo() {
 		return mobileNo;
 	}
 
-	public void setMobileNo(int mobileNo) {
+	public void setMobileNo(Long mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 

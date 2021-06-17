@@ -43,7 +43,7 @@ public class ProductServiceImplimentation implements ProductService {
 	}
 	
 	@Override
-	public Product deleteProductByProductId(int productId) {
+	public Product deleteProductByProductId(String productId) {
 		
 		return productRepository.deleteByProductId(productId);
 	}

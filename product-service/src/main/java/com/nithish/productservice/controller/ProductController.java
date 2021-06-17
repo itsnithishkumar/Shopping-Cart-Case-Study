@@ -27,12 +27,12 @@ public class ProductController {
 		
 		return productRepository.findAll();
 	}
-	@GetMapping("/{productName}")
+	@GetMapping("/productname/{productName}")
 	public List<Product> getProductByName(@PathVariable String productName) {
 		
 		return productRepository.findByProductName(productName);
 	}
-	@GetMapping("/{category}")
+	@GetMapping("/category/{category}")
 	public List<Product> getProductByCategory(@PathVariable String category){
 		
 		return productRepository.findByCategory(category);
@@ -55,7 +55,7 @@ public class ProductController {
 		return "A existing product is updated";
 	}
 	@DeleteMapping("/deleteproduct/{productId}")
-	public String deleteProductByProductId(@PathVariable int productId) {
+	public String deleteProductByProductId(@PathVariable String productId) {
 		
 		productRepository.deleteByProductId(productId);
 		return "Product Deleted with a Product Id " + productId;

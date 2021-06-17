@@ -31,11 +31,6 @@ public class Cart {
 	}
 	public BigDecimal getTotalPrice() {
 		
-		for(int i=0; i<(items.size()); i++)
-		{
-			totalPrice=totalPrice.add(((Items) items).getPrice());
-		}
-		
 		return totalPrice;
 	}
 	public void setTotalPrice(BigDecimal totalPrice) {

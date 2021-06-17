@@ -10,15 +10,10 @@ public interface OrderService {
 	
 	List<Order> getAllOrders();
 	
-	Object placeOrder(Cart cart);
+	Order placeOrder(Order order);
 	
 	void deleteOrder(String orderId);
 	
-	List<Order> getOrderByCustomerId(Integer customerId);
-
-	String changeStatus(String orderId);
-
-	
-	
+	List<Order> getOrderByOrderId(String orderId);
 
 }

@@ -1,7 +1,6 @@
 package com.nithish.ordersservice.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,8 +10,7 @@ public class Order {
 	
 	@Id
 	private String orderId;
-	private LocalDate orderDate;
-	private Integer customerId;
+	private String orderDate;
 	private String paymentMode;
 	private BigDecimal amountPaid;
 	private String orderStatus;
@@ -24,12 +22,11 @@ public class Order {
 		super();
 	}
 
-	public Order(String orderId, LocalDate orderDate, Integer customerId, String paymentMode, BigDecimal amountPaid,
+	public Order(String orderId, String orderDate, String paymentMode, BigDecimal amountPaid,
 			String orderStatus, int quantity, Address address, Product product) {
 		super();
 		this.orderId = orderId;
 		this.orderDate = orderDate;
-		this.customerId = customerId;
 		this.paymentMode = paymentMode;
 		this.amountPaid = amountPaid;
 		this.orderStatus = orderStatus;
@@ -46,20 +43,12 @@ public class Order {
 		this.orderId = orderId;
 	}
 
-	public LocalDate getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(LocalDate orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
-	}
-
-	public Integer getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
 	}
 
 	public String getPaymentMode() {
@@ -112,7 +101,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", customerId=" + customerId
+		return "Order [orderId=" + orderId + ", orderDate=" + orderDate
 				+ ", paymentMode=" + paymentMode + ", amountPaid=" + amountPaid + ", orderStatus=" + orderStatus
 				+ ", quantity=" + quantity + ", address=" + address + ", product=" + product + "]";
 	}

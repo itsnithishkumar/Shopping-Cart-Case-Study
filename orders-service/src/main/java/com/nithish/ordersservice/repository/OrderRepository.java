@@ -11,11 +11,10 @@ import com.nithish.ordersservice.entity.Order;
 
 public interface OrderRepository extends MongoRepository<Order, String> {
 
-	List<Order> findByCustomerId(Integer customerId);
-
-	String changeStatusTo(String orderStatus, String orderId);
 
 	Object save(Cart cart);
+
+	List<Order> findByOrderId(String orderId);
 	
 
 }

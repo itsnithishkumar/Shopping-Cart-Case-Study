@@ -9,8 +9,7 @@ import org.springframework.data.annotation.Id;
 public class Product {
 	
 	@Id
-	private String Id;
-	private int productId;
+	private String productId;
 	private String productType;
 	private String productName;
 	private String category;
@@ -22,11 +21,12 @@ public class Product {
 	public Product() {
 		
 	}
+	
+	
 
-	public Product(String id, int productId, String productType, String productName,String category , double price, String description,
-			int rating, Map<String, String> specification) {
+	public Product(String productId, String productType, String productName, String category, double price,
+			String description, int rating, Map<String, String> specification) {
 		super();
-		Id = id;
 		this.productId = productId;
 		this.productType = productType;
 		this.productName = productName;
@@ -37,19 +37,13 @@ public class Product {
 		this.specification = specification;
 	}
 
-	public String getId() {
-		return Id;
-	}
 
-	public void setId(String id) {
-		Id = id;
-	}
 
-	public int getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 
-	public void setProductId(int productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
@@ -109,12 +103,16 @@ public class Product {
 		this.specification = specification;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Product [Id=" + Id + ", productId=" + productId + ", productType=" + productType + ", productName="
-				+ productName + ", category=" + category + ", price=" + price + ", description=" + description
-				+ ", rating=" + rating + ", specification=" + specification + "]";
+		return "Product [productId=" + productId + ", productType=" + productType + ", productName=" + productName
+				+ ", category=" + category + ", price=" + price + ", description=" + description + ", rating=" + rating
+				+ ", specification=" + specification + "]";
 	}
+
+	
 	
 	
 

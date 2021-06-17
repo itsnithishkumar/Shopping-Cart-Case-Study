@@ -4,11 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
-import static org.springframework.data.mongodb.core.query.Criteria.where;
-import static org.springframework.data.mongodb.core.query.Query.query;
-import org.springframework.data.mongodb.core.query.Update;
-
-import com.nithish.ordersservice.entity.Cart;
 import com.nithish.ordersservice.entity.Order;
 import com.nithish.ordersservice.repository.OrderRepository;
 
@@ -25,11 +20,10 @@ public class OrderServiceImplimentation implements OrderService {
 		
 		return orderRepository.findAll();
 	}
-
 	@Override
-	public Object placeOrder(Cart cart) {
+	public Order placeOrder(Order order) {
 		
-		return orderRepository.save(cart);
+		return orderRepository.save(order);
 	}
 
 	@Override
@@ -37,22 +31,13 @@ public class OrderServiceImplimentation implements OrderService {
 		
 		orderRepository.deleteById(orderId);
 	}
-
 	@Override
-	public List<Order> getOrderByCustomerId(Integer customerId) {
-
-		return orderRepository.findByCustomerId(customerId);
+	public List<Order> getOrderByOrderId(String orderId) {
+		
+		return orderRepository.findByOrderId(orderId);
 	}
 
-	@Override
-	public String changeStatus(String orderId) {
-		
-		  Order order1=mongoOperations.findOne(query(where("orderId").is(orderId)),Order.class); 
-		  mongoOperations.updateFirst(query(where("OrderId").is(1001)),
-		  Update.update("orderStatus", "Order Placed"), Order.class);
-		
-		return "Order Status is updated";
-	}
+	
 
 
 }
