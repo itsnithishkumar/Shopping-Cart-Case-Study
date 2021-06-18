@@ -1,6 +1,7 @@
 package com.nithish.cartservice.entity;
 
-import java.math.BigDecimal;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -11,16 +12,15 @@ public class Cart {
 	
 	@Id
 	private String cartId;
-	private BigDecimal totalPrice;
-	private List<Items> items;
+	private double cartTotal;
+	private List<Items> items= new ArrayList<>();;
 	
 	public Cart() {
 		super();
 	}
-	public Cart(String cartId, BigDecimal totalPrice, List<Items> items) {
+	public Cart(String cartId, List<Items> items) {
 		super();
 		this.cartId = cartId;
-		this.totalPrice = totalPrice;
 		this.items = items;
 	}
 	public String getCartId() {
@@ -29,12 +29,11 @@ public class Cart {
 	public void setCartId(String cartId) {
 		this.cartId = cartId;
 	}
-	public BigDecimal getTotalPrice() {
-		
-		return totalPrice;
+	public double getCartTotal() {
+		return cartTotal;
 	}
-	public void setTotalPrice(BigDecimal totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setCartTotal(double cartTotal) {
+		this.cartTotal = cartTotal;
 	}
 	public List<Items> getItems() {
 		return items;
@@ -42,9 +41,8 @@ public class Cart {
 	public void setItems(List<Items> items) {
 		this.items = items;
 	}
-	@Override
-	public String toString() {
-		return "Cart [cartId=" + cartId + ", totalPrice=" + totalPrice + ", items=" + items + "]";
-	}
+	public static double getSubTotalForItem(Product product, int quantity){
+	       return (product.getPrice()*quantity);
+	    }
 
 }
