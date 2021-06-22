@@ -1,33 +1,33 @@
 package com.nithish.ordersservice.entity;
 
-import java.math.BigDecimal;
 
 public class Items {
 
-	private String productName;
-	private BigDecimal price;
+	private Product product;
+	private double subTotal;
 	private int quantity;
-		
-	public Items() {
+	
+	
+	public Items(Product product, double subTotal, int quantity) {
 		super();
-	}
-	public Items(String productName, BigDecimal price, int quantity) {
-		super();
-		this.productName = productName;
-		this.price = price;
+		this.product = product;
+		this.subTotal = subTotal;
 		this.quantity = quantity;
 	}
-	public String getProductName() {
-		return productName;
+	public Items() {
+		
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public Product getProduct() {
+		return product;
 	}
-	public BigDecimal getPrice() {
-		return price;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
-	public void setPrice(BigDecimal price) {
-		this.price = price;
+	public double getSubTotal() {
+		return subTotal;
+	}
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -35,10 +35,7 @@ public class Items {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	@Override
-	public String toString() {
-		return "Items [productName=" + productName + ", price=" + price + ", quantity=" + quantity + "]";
-	}
+		
 	
 	
 	

@@ -9,6 +9,6 @@ import com.nithish.cartservice.entity.Cart;
 @Repository
 public interface CartRepository extends MongoRepository<Cart,String> {
 
-	Cart findbycartId(String cartId);
+	Cart findBycartId(String cartId);
 
 }

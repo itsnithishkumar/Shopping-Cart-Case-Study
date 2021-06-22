@@ -6,7 +6,7 @@ import com.nithish.cartservice.entity.Cart;
 
 public interface CartService {
 	
-	Cart findbycartId(String cartId);
+	Cart findBycartId(String cartId);
 
     Cart addItemToCart(Cart cart);
 

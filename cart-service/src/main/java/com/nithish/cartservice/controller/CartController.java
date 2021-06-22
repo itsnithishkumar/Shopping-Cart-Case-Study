@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.nithish.cartservice.entity.Cart;
 import com.nithish.cartservice.entity.Items;
+import com.nithish.cartservice.repository.CartRepository;
 import com.nithish.cartservice.service.CartService;
 
 @RestController
@@ -19,12 +20,15 @@ public class CartController {
 	@Autowired
 	private CartService cartService;
 	
+	@Autowired
+	private CartRepository cartRepository;
+	
     @PostMapping("/additem")
     public ResponseEntity<?> addItemToCart(@RequestBody Items item,
                                            @RequestParam String cartId){
         try{
 
-            Cart cart = cartService.findbycartId(cartId);
+            Cart cart = cartService.findBycartId(cartId);
 
             if(cart!=null){
                 List<Items> items = cart.getItems();
@@ -55,7 +59,7 @@ public class CartController {
     @GetMapping("/getcart")
     public ResponseEntity<?> getCartByUserId(@RequestParam String cartId){
         try{
-            Cart cart = this.cartService.findbycartId(cartId);
+            Cart cart = this.cartService.findBycartId(cartId);
             if(cart != null){
                 return new ResponseEntity<>(cart,HttpStatus.OK);
             }else{
@@ -73,7 +77,7 @@ public class CartController {
                                               @RequestParam String cartId){
         try{
 
-            Cart cart = cartService.findbycartId(cartId);
+            Cart cart = cartService.findBycartId(cartId);
             List<Items> items = cart.getItems();
 
             Items previousItem = new Items();
@@ -117,7 +121,7 @@ public class CartController {
                                                 @RequestParam String cartId
                                                 ){
         try{
-            Cart cart = this.cartService.findbycartId(cartId);
+            Cart cart = this.cartService.findBycartId(cartId);
             List<Items> items = cart.getItems();
 
 //          items.removeIf(x->x.getProductId().equals(productId));
@@ -138,7 +142,7 @@ public class CartController {
     @DeleteMapping("/deletecart")
     public ResponseEntity<?> deleteCart(@RequestParam String cartId){
         try{
-            Cart cart = this.cartService.findbycartId(cartId);
+            Cart cart = this.cartService.findBycartId(cartId);
             cart.setCartTotal(0);
             List<Items> items = new ArrayList<>();
             cart.setItems(items);

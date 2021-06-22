@@ -1,6 +1,7 @@
 package com.nithish.productservice.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,6 +28,11 @@ public class ProductController {
 		
 		return productRepository.findAll();
 	}
+	@GetMapping("/{prodcutId}")
+	public Optional<Product> getProductById(@PathVariable String productId) {
+		
+		return productRepository.findById(productId);
+	}
 	@GetMapping("/productname/{productName}")
 	public List<Product> getProductByName(@PathVariable String productName) {
 		
@@ -37,24 +43,19 @@ public class ProductController {
 		
 		return productRepository.findByCategory(category);
 	}
-	@GetMapping
-	public List<Product> getProductByType(String productType){
-		
-		return productRepository.findByProductType(productType);
-	}
-	@PostMapping("/addProduct")
+	@PostMapping("/admin/addProduct")
 	public String addProduct(@RequestBody Product product) {
 		
 		productRepository.save(product);
 		return "A new product is added";
 	}
-	@PutMapping("/updateproduct")
+	@PutMapping("/admin/updateproduct")
 	public String updateProduct(Product product) {
 		
 		productRepository.save(product);
 		return "A existing product is updated";
 	}
-	@DeleteMapping("/deleteproduct/{productId}")
+	@DeleteMapping("/admin/deleteproduct/{productId}")
 	public String deleteProductByProductId(@PathVariable String productId) {
 		
 		productRepository.deleteByProductId(productId);

@@ -14,9 +14,9 @@ public class CartServiceImplimentation implements CartService {
 	CartRepository cartRepository;
 
 	@Override
-	public Cart findbycartId(String cartId) {
+	public Cart findBycartId(String cartId) {
 		
-		return cartRepository.findbycartId(cartId);
+		return cartRepository.findBycartId(cartId);
 	}
 
 	@Override

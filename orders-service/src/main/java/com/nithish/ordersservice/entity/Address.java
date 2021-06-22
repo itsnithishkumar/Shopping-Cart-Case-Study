@@ -1,10 +1,7 @@
 package com.nithish.ordersservice.entity;
 
 public class Address {
-	
-	private Integer customerId;
-	private String fullName;
-	private Long mobileNo;
+
 	private String houseNo;
 	private String streetName;
 	private String city;
@@ -15,12 +12,9 @@ public class Address {
 		super();
 	}
 
-	public Address(Integer customerId, String fullName, Long mobileNo, String houseNo, String streetName, String city,
+	public Address(String houseNo, String streetName, String city,
 			String state, int pincode) {
 		super();
-		this.customerId = customerId;
-		this.fullName = fullName;
-		this.mobileNo = mobileNo;
 		this.houseNo = houseNo;
 		this.streetName = streetName;
 		this.city = city;
@@ -28,29 +22,6 @@ public class Address {
 		this.pincode = pincode;
 	}
 
-	public Integer getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public Long getMobileNo() {
-		return mobileNo;
-	}
-
-	public void setMobileNo(Long mobileNo) {
-		this.mobileNo = mobileNo;
-	}
 
 	public String getHouseNo() {
 		return houseNo;
@@ -94,8 +65,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [customerId=" + customerId + ", fullName=" + fullName + ", mobileNo=" + mobileNo + ", houseNo="
-				+ houseNo + ", streetName=" + streetName + ", city=" + city + ", state=" + state + ", pincode="
+		return "Address [houseNo=" + houseNo + ", streetName=" + streetName + ", city=" + city + ", state=" + state + ", pincode="
 				+ pincode + "]";
 	}
 	
